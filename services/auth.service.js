@@ -28,7 +28,7 @@ function verifyAccessToken(token) {
 };
 
 async function googleAuth(code) {
-  console.log("Google login");
+  console.log("Google login", code);
   const CLIENT_ID = process.env.GOOGLE_CLIENT_ID;
   const CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET;
   const REDIRECT_URI = process.env.REDIRECT_URI;
@@ -45,7 +45,7 @@ async function googleAuth(code) {
       audience: CLIENT_ID
     });
 
-    const userInfo = await ticket.getPayLoad();
+    const userInfo = await ticket.getPayload();
     console.log("Google user", userInfo);
     return {user: userInfo, tokens};
   } catch (error) {
