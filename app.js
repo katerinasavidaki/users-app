@@ -10,6 +10,7 @@ const swaggerDocument = require('./swagger');
 
 const user = require('./routes/user.routes');
 const userProduct = require('./routes/user.products.routes');
+const product = require('./routes/product.routes');
 const auth = require('./routes/auth.routes');
 
 app.use(cors({
@@ -20,6 +21,7 @@ app.use(cors({
 app.use('/api/auth', auth);
 app.use('/api/users', user);
 app.use('/api/user-product', userProduct);
+app.use('/api/products', product);
 
 app.use('/', express.static('files'));
 
