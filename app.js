@@ -15,7 +15,7 @@ const auth = require('./routes/auth.routes');
 
 app.use(cors({
   // origin: '*'
-  origin: ['http://localhost:3000']
+  origin: ['http://localhost:4200']
 }));
 
 app.use('/api/auth', auth);

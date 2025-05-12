@@ -124,3 +124,21 @@ exports.deleteByEmail = async(req, res) => {
   }
 };
 // http://localhost:3000/api/users/test1/email/lalakis@aueb.gr
+
+exports.checkDuplicateEmail = async(req, res) => {
+  const email = req.params.email;
+ 
+  console.log("Check for duplicate email address", email);
+  try {
+    const result = await User.findOne({ email: email });
+    if (result) {
+      res.status(400).json({ status: false });
+    } else {
+      res.status(200).json({ status: true });
+    }
+  } catch (err) {
+    res.status(400).json({ status: false, data: err });
+    console.error(`Problem in finding email address: ${email}`, err);
+  }
+}
+ 
